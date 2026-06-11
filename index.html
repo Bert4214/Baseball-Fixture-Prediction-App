@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matchup Board · {{ week_label }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <header class="board-head">
+      <div class="brand">
+        <span class="diamond" aria-hidden="true"></span>
+        <h1>Matchup Board</h1>
+      </div>
+      <div class="meta">
+        <span class="week">{{ week_label }}</span>
+        <span class="sub">times in {{ tz_abbr }} · updated {{ updated_at }}</span>
+      </div>
+      <a class="refresh" href="{{ url_for('board.index') }}">Refresh</a>
+    </header>
+
+    {% if error %}
+    <div class="notice" role="alert">
+      <strong>The schedule didn't load.</strong> {{ error }} Try again in a moment.
+    </div>
+    {% endif %}
+
+    {% if not error and board|sum(attribute='games', start=[])|length == 0 %}
+    <div class="empty">
+      <p>No games this week.</p>
+      <span>It's an off stretch around the league — check back when the slate fills in.</span>
+    </div>
+    {% endif %}
+
+    {% for day in board %}
+    <section class="day{% if day.is_today %} is-today{% endif %}">
+      <div class="day-rule">
+        <span class="weekday">{{ day.weekday }}</span>
+        <span class="date">{{ day.date_label }}</span>
+        {% if day.is_today %}<span class="today">Today</span>{% endif %}
+        <span class="line"></span>
+        <span class="count">{{ day.games|length }} game{{ '' if day.games|length == 1 else 's' }}</span>
+      </div>
+
+      {% if day.games %}
+      <div class="slate">
+        {% for g in day.games %}
+        <article class="game game--{{ g.status }}">
+          <div class="game-top">
+            <span class="pill pill--{{ g.status }}">
+              {% if g.status == 'live' %}<span class="dot" aria-hidden="true"></span>{% endif %}
+              {{ g.status_label }}
+            </span>
+            {% if g.venue %}<span class="venue">{{ g.venue }}</span>{% endif %}
+          </div>
+
+          {% for side in [g.away, g.home] %}
+          <div class="team{% if side.is_winner %} is-winner{% endif %}">
+            <span class="abbr">{{ side.abbr }}</span>
+            <span class="name">{{ side.name }}</span>
+            {% if side.record %}<span class="record">{{ side.record }}</span>{% endif %}
+            <span class="score score--{{ g.score_mode }}">
+              {% if side.score is not none %}{{ side.score }}{% else %}&ndash;{% endif %}
+            </span>
+          </div>
+          {% endfor %}
+
+          <div class="game-foot">
+            <div class="pitchers">
+              <span class="pitch"><span class="lab">SP</span> {{ g.away.pitcher }}</span>
+              <span class="pitch"><span class="lab">SP</span> {{ g.home.pitcher }}</span>
+            </div>
+            {% if g.score_mode == 'pred' %}
+              <span class="tag tag--proj">projected</span>
+            {% elif g.score_mode == 'none' and g.status == 'upcoming' %}
+              <span class="tag tag--pending">projection pending</span>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="offday">No games scheduled.</p>
+      {% endif %}
+    </section>
+    {% endfor %}
+
+    <footer class="board-foot">
+      <span>Data: MLB Stats API · educational use.</span>
+      <span>Scores and projections refresh on reload.</span>
+    </footer>
+  </div>
+</body>
+</html>
