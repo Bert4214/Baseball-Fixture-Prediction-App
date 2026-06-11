@@ -1,0 +1,98 @@
+{
+  "copyright": "Copyright 2026 MLB Advanced Media, L.P.",
+  "totalGames": 4,
+  "dates": [
+    {
+      "date": "2026-06-10",
+      "totalGames": 4,
+      "games": [
+        {
+          "gamePk": 800001,
+          "gameDate": "2026-06-10T17:05:00Z",
+          "officialDate": "2026-06-10",
+          "gameType": "R",
+          "status": {"abstractGameState": "Final", "detailedState": "Final", "startTimeTBD": false},
+          "teams": {
+            "away": {
+              "team": {"id": 120, "name": "Washington Nationals", "abbreviation": "WSH", "teamName": "Nationals", "teamCode": "was"},
+              "leagueRecord": {"wins": 30, "losses": 35, "pct": ".462"},
+              "score": 3, "isWinner": true,
+              "probablePitcher": {"id": 663623, "fullName": "Jake Irvin"}
+            },
+            "home": {
+              "team": {"id": 134, "name": "Pittsburgh Pirates", "abbreviation": "PIT", "teamName": "Pirates", "teamCode": "pit"},
+              "leagueRecord": {"wins": 28, "losses": 37, "pct": ".431"},
+              "score": 0, "isWinner": false,
+              "probablePitcher": {"id": 656605, "fullName": "Mitch Keller"}
+            }
+          },
+          "venue": {"id": 31, "name": "PNC Park"},
+          "seriesDescription": "Regular Season", "doubleHeader": "N", "gameNumber": 1
+        },
+        {
+          "gamePk": 800002,
+          "gameDate": "2026-06-10T23:05:00Z",
+          "officialDate": "2026-06-10",
+          "gameType": "R",
+          "status": {"abstractGameState": "Live", "detailedState": "In Progress", "startTimeTBD": false},
+          "teams": {
+            "away": {
+              "team": {"id": 147, "name": "New York Yankees", "abbreviation": "NYY", "teamName": "Yankees", "teamCode": "nyy"},
+              "leagueRecord": {"wins": 41, "losses": 24, "pct": ".631"},
+              "score": 2, "isWinner": false,
+              "probablePitcher": {"id": 592789, "fullName": "Gerrit Cole"}
+            },
+            "home": {
+              "team": {"id": 111, "name": "Boston Red Sox", "abbreviation": "BOS", "teamName": "Red Sox", "teamCode": "bos"},
+              "leagueRecord": {"wins": 36, "losses": 29, "pct": ".554"},
+              "score": 4, "isWinner": false,
+              "probablePitcher": {"id": 657277, "fullName": "Brayan Bello"}
+            }
+          },
+          "linescore": {"currentInning": 7, "currentInningOrdinal": "7th", "inningState": "Top", "isTopInning": true},
+          "venue": {"id": 3, "name": "Fenway Park"},
+          "seriesDescription": "Regular Season", "doubleHeader": "N", "gameNumber": 1
+        },
+        {
+          "gamePk": 800003,
+          "gameDate": "2026-06-11T02:10:00Z",
+          "officialDate": "2026-06-10",
+          "gameType": "R",
+          "status": {"abstractGameState": "Preview", "detailedState": "Scheduled", "startTimeTBD": false},
+          "teams": {
+            "away": {
+              "team": {"id": 119, "name": "Los Angeles Dodgers", "abbreviation": "LAD", "teamName": "Dodgers", "teamCode": "lad"},
+              "leagueRecord": {"wins": 44, "losses": 21, "pct": ".677"},
+              "probablePitcher": {"id": 477132, "fullName": "Clayton Kershaw"}
+            },
+            "home": {
+              "team": {"id": 137, "name": "San Francisco Giants", "abbreviation": "SF", "teamName": "Giants", "teamCode": "sfn"},
+              "leagueRecord": {"wins": 33, "losses": 32, "pct": ".508"}
+            }
+          },
+          "venue": {"id": 2395, "name": "Oracle Park"},
+          "seriesDescription": "Regular Season", "doubleHeader": "N", "gameNumber": 1
+        },
+        {
+          "gamePk": 800004,
+          "gameDate": "2026-06-10T20:20:00Z",
+          "officialDate": "2026-06-10",
+          "gameType": "R",
+          "status": {"abstractGameState": "Preview", "detailedState": "Postponed", "startTimeTBD": false},
+          "teams": {
+            "away": {
+              "team": {"id": 112, "name": "Chicago Cubs", "abbreviation": "CHC", "teamName": "Cubs", "teamCode": "chn"},
+              "leagueRecord": {"wins": 35, "losses": 30, "pct": ".538"}
+            },
+            "home": {
+              "team": {"id": 158, "name": "Milwaukee Brewers", "abbreviation": "MIL", "teamName": "Brewers", "teamCode": "mil"},
+              "leagueRecord": {"wins": 37, "losses": 28, "pct": ".569"}
+            }
+          },
+          "venue": {"id": 32, "name": "American Family Field"},
+          "seriesDescription": "Regular Season", "doubleHeader": "N", "gameNumber": 1
+        }
+      ]
+    }
+  ]
+}
